@@ -5,20 +5,12 @@ import com.vytrack.utilities.VytrackUtils;
 import org.testng.annotations.Test;
 
 public class US7 extends TestBase {
-    //testing module for sales manager
-
-    @Test
-    public void as_sales_manager(){
-        VytrackUtils.loginAsSalesManager();
-    }
+    //testing checkboxes for only store manager, as truck manager and sales manager checkboxes have bugs
 
     @Test
     public void as_store_manager(){
         VytrackUtils.loginAsStoreManger();
     }
 
-    @Test
-    public void as_driver(){
-        VytrackUtils.loginAsDriver();
-    }
+
 }
