@@ -1,4 +1,4 @@
 package com.vytrack.tests;
 
-public class Hulya {
+public class US7 {
 }
