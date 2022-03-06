@@ -22,11 +22,6 @@ public class US7 extends TestBase {
         super.setUp();
         VytrackUtils.loginAsStoreManger();
     }
-//
-//        actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[2]")));
-//        actions.moveToElement(Driver.getDriver().findElement(By.xpath("//a[@href='entity/Extend_Entity_Carreservation']"))).perform();
-//        actions.click().build().perform();
-//        actions.moveToElement(Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[2]")));
     @Test(priority = 1)
     public void store_manager_view_unchecked_checkboxes(){
         // Using Action class to hover over
@@ -67,7 +62,6 @@ public class US7 extends TestBase {
         BrowserUtils.sleep(2);
         allCheckBoxes.forEach(p-> Assert.assertTrue((p.isSelected())));
     }
-
     @Test(priority = 3)
     public void store_managers_check_any_cars_checkbox(){
         // Using Action class to hover over
