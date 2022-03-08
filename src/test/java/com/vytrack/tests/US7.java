@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.List;
@@ -29,13 +30,10 @@ public class US7 extends TestBase {
         //locating "FLeet" button and going on it
         WebElement fleetBtn = Driver.getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1']"));
         BrowserUtils.sleep(2);
-        actions.moveToElement(fleetBtn).build().perform();
-        BrowserUtils.sleep(2);
         //locating "Vehicle" button, going on it, and click
         WebElement vehiclesBtn = Driver.getDriver().findElement(By.xpath("//a[@href='entity/Extend_Entity_Carreservation']/span"));
-        actions.moveToElement(vehiclesBtn).build().perform();
-        BrowserUtils.sleep(2);
-        vehiclesBtn.click();
+        actions.moveToElement(fleetBtn).pause(1000).moveToElement(vehiclesBtn).pause(1000).click(vehiclesBtn).build().perform();
+
         //finding all checkboxes
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
         //verify all of them are unchecked by using !isSelected() method
@@ -50,13 +48,9 @@ public class US7 extends TestBase {
         //locating "FLeet" button and going on it
         WebElement fleetBtn = Driver.getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1']"));
         BrowserUtils.sleep(2);
-        actions.moveToElement(fleetBtn).build().perform();
-        BrowserUtils.sleep(2);
         //locating "Vehicle" button, going on it, and click
         WebElement vehiclesBtn = Driver.getDriver().findElement(By.xpath("//a[@href='entity/Extend_Entity_Carreservation']/span"));
-        actions.moveToElement(vehiclesBtn).build().perform();
-        BrowserUtils.sleep(2);
-        vehiclesBtn.click();
+        actions.moveToElement(fleetBtn).pause(1000).moveToElement(vehiclesBtn).pause(1000).click(vehiclesBtn).build().perform();
 
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
         Driver.getDriver().findElement(By.xpath("(//div[@class='btn-group dropdown']//input)[1]")).click();
@@ -71,13 +65,9 @@ public class US7 extends TestBase {
         //locating "FLeet" button and going on it
         WebElement fleetBtn = Driver.getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1']"));
         BrowserUtils.sleep(2);
-        actions.moveToElement(fleetBtn).build().perform();
-        BrowserUtils.sleep(2);
         //locating "Vehicle" button, going on it, and click
         WebElement vehiclesBtn = Driver.getDriver().findElement(By.xpath("//a[@href='entity/Extend_Entity_Carreservation']/span"));
-        actions.moveToElement(vehiclesBtn).build().perform();
-        BrowserUtils.sleep(2);
-        vehiclesBtn.click();
+        actions.moveToElement(fleetBtn).pause(2000).moveToElement(vehiclesBtn).pause(1000).click(vehiclesBtn).build().perform();
 
         //finding all checkboxes
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
