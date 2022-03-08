@@ -12,21 +12,25 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class US3 extends TestBase {
-//    @DataProvider(name = "StoreManagersLogin")
-//    public Object[][] storeManager(){
-//        return new Object[][]{
-//                {"storemanager55"},{"storemanager56"},{"storemanager57"},{"storemanager58"}
-//        };
-//    }
-    @Test //(dataProvider = "StoreManagersLogin" )
-    public void click_the_webelement(){
-        VytrackUtils.login(ConfigurationReader.getProperty("store_manager_username"), ConfigurationReader.getProperty("password"));
+    @DataProvider(name = "usernames")
+    public Object[][] usernames(){
+        return new Object[][]{
+                {"user1"},{"user2"},{"user3"},{"user4"},{"user5"},{"user6"},
+                {"storemanager55"},{"storemanager56"},{"storemanager57"},{"storemanager58"},
+                {"salesmanager260"},{"salesmanager261"},{"salesmanager262"},
+                {"salesmanager263"},{"salesmanager264"},{"salesmanager265"},{"salesmanager266"}
 
-        BrowserUtils.sleep(10);
+        };
+    }
+    @Test (dataProvider = "usernames" )
+    public void click_the_webelement(String username){
+        VytrackUtils.login(username, ConfigurationReader.getProperty("password"));
+
+        BrowserUtils.sleep(2);
         //locate and click "Learn how to use this space" webElement:
         Driver.getDriver().findElement(By.xpath("//a[.='Learn how to use this space']")).click();
 
-        BrowserUtils.sleep(10);
+        BrowserUtils.sleep(2);
         // check if text "How To Use Pinbar" is displayed
         WebElement pinBar = Driver.getDriver().findElement(By.xpath("//h3[.='How To Use Pinbar']"));
         Assert.assertTrue(pinBar.isDisplayed());
@@ -35,15 +39,16 @@ public class US3 extends TestBase {
         WebElement secondText = Driver.getDriver().findElement(By.xpath("//p[1]"));
         Assert.assertTrue(secondText.isDisplayed());
 
-    }@Test //(dataProvider = "StoreManagersLogin" )
-    public void locate_the_image(){
-        VytrackUtils.login(ConfigurationReader.getProperty("store_manager_username"), ConfigurationReader.getProperty("password"));
-        BrowserUtils.sleep(10);
+    }
+    @Test (dataProvider = "usernames" )
+    public void locate_the_image(String username){
+        VytrackUtils.login(username, ConfigurationReader.getProperty("password"));
+        BrowserUtils.sleep(2);
 
         //locate and click "Learn how to use this space" webElement:
         Driver.getDriver().findElement(By.xpath("//a[.='Learn how to use this space']")).click();
 
-        BrowserUtils.sleep(10);
+        BrowserUtils.sleep(2);
 
         //check if you can see the image
         WebElement image = Driver.getDriver().findElement(By.xpath("//img[@src='/bundles/oronavigation/images/pinbar-location.jpg']"));
