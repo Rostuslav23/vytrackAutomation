@@ -10,52 +10,60 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class US92 extends TestBase {
 
 
-    WebDriver driver;
+    @DataProvider(name = "SalesManager")
+    public Object[][] truckDriver() {
+        return new Object[][]{
+                {"storemanager55" }, {"storemanager56" }, {"storemanager57" }, {"storemanager58" }
+        };
 
-
-@Test
-    public void store_manager_view_unchecked_checkboxes(){
+    }
+@Test(dataProvider = "SalesManager")
+    public void store_manager_shouldSeeCheckBoxes(String salesManagerUsername){
         //login to the page as a Store Manager
 
-    driver=Driver.getDriver();
-    driver.get("https://app.vytrack.com/user/login");
-
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-    driver.findElement(By.xpath("//input[@id='prependedInput']")).sendKeys(ConfigurationReader.getProperty("store_manager_username"));
-
-    driver.findElement(By.xpath("//input[@id='prependedInput2']")).sendKeys(ConfigurationReader.getProperty("password"));
-
-    driver.findElement(By.xpath("//button[@id='_submit']")).click();
+   VytrackUtils.login(salesManagerUsername,ConfigurationReader.getProperty("password"));
 
 
 
-
-    driver.findElement(By.xpath("(//span[@class='title title-level-1'])[6]")).click();
-
-    driver.findElement(By.xpath("//span[.='Campaigns']")).click();
+     //locating "marketing" tab
+    Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[6]")).click();
+     // locating "Campaigns" tab
+    Driver.getDriver().findElement(By.xpath("//span[.='Campaigns']")).click();
 
     BrowserUtils.sleep(3);
+   // locating Grid Settings and click it
+    Driver.getDriver().findElement(By.xpath("//a[@title='Grid Settings']")).click();
 
-    driver.findElement(By.xpath("//a[@title='Grid Settings']")).click();
+ // locating all checkBoxes
+    List<WebElement> allCheckBoxes= Driver.getDriver().findElements(By.xpath("//input[contains (@id,'column-c')]"));
+    //locating if the checkBoxes are selected
+    allCheckBoxes.forEach(p->Assert.assertTrue(p.isSelected()));
 
-    driver.findElement(By.xpath("//input[@id='column-c95']")).click();
+    BrowserUtils.sleep(2);
 
-    driver.findElement(By.xpath("//input[@id='column-c96']")).click();
+    //Uncheck all checkBoxes and verify all is unselected
 
-    driver.findElement(By.xpath("//input[@id='column-c97']")).click();
+    for (WebElement each: allCheckBoxes){
 
-    driver.findElement(By.xpath("//input[@id='column-c98']")).click();
+        each.click();
+        Assert.assertTrue(each.isSelected());
 
-    driver.findElement(By.xpath("//input[@id='column-c99']")).click();
+        for (int i = 0; i < allCheckBoxes.size()-1; i++) {
+            allCheckBoxes.get(i).click();
+            Assert.assertTrue(!(allCheckBoxes.get(i).isSelected()));
+
+        }
+    }
 
 //input[@id='column-c95']
 
