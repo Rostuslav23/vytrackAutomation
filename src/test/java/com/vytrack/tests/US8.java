@@ -13,25 +13,33 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US8{
+
+
+
+
+
     WebDriver driver;
     @Test
     public void test1() throws InterruptedException {
         VytrackUtils.loginAsDriver();
-        BrowserUtils.sleep(10);
 
 
-        BrowserUtils.sleep(10);
+
+
         WebElement activitebutton = driver.findElement(By.xpath("(//span[@class='title title-level-1'])[3]"));
-        activitebutton.click();
         BrowserUtils.sleep(10);
+        activitebutton.click();
+
 
         WebElement Calenderbutton = driver.findElement(By.xpath("//span[.='Calendar Events']"));
+        BrowserUtils.sleep(10);
         Calenderbutton.click();
         WebElement calender= driver.findElement(By.xpath("//a[@title='Create Calendar event']"));
+        BrowserUtils.sleep(10);
         calender.click();
-        BrowserUtils.sleep(10);
-        driver.findElement(By.xpath("//*[@id=\"oro_calendar_event_form-uid-6227e795664b4\"]/div[2]/div[2]/div/div[1]/div[2]/div/fieldset/div[2]/div[2]/div[1]/div[1]/label")).click();
-        BrowserUtils.sleep(10);
+
+        driver.findElement(By.xpath("(//input[@type=\"checkbox\"])[2]")).click();
+
         Select select=new Select(driver.findElement(By.xpath("//input[@name=\"temp-validation-name-1579\"]")));
 
         String actual=select.getFirstSelectedOption().getText();
