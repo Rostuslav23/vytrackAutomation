@@ -30,7 +30,7 @@ public class US8 extends TestBase {
         Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[3]")).click();
         //click on the "Calendar Event"
         Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
-
+        BrowserUtils.sleep(2);
         //Create calendar event
         Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']")).click();
 
@@ -60,6 +60,7 @@ public class US8 extends TestBase {
         String actualErrror = Driver.getDriver().findElement(By.xpath("(//span[.='This value should not be blank.'])[3]")).getText();
 
         Assert.assertEquals(ExpectedError, actualErrror);
+
 
 
     }
