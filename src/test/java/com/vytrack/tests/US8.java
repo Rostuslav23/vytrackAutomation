@@ -25,7 +25,7 @@ public class US8 extends TestBase {
     @Test(dataProvider = "TruckDriverLogin")
     public void truck_driver_see_error_messages(String trucksUsers) {
         VytrackUtils.login(trucksUsers, ConfigurationReader.getProperty("password"));
-
+        BrowserUtils.sleep(5);
         //click to "Activities"
         Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[3]")).click();
         //click on the "Calendar Event"
