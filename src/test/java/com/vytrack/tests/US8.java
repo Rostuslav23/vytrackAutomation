@@ -14,7 +14,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class US8 extends TestBase {
+public class US8  {
 
     @DataProvider(name = "TruckDriverLogin")
     public Object[][] truckDriver(){
@@ -32,7 +32,7 @@ public class US8 extends TestBase {
         Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
 
         //Create calendar event
-        Driver.getDriver().findElement(By.xpath("(//a[@href=\" / calendar / event / create\"])[3]")).click();
+        Driver.getDriver().findElement(By.xpath("//a[@title=\"Create Calendar event\"]")).click();
 
         //click on the calendar button
         BrowserUtils.sleep(2);
