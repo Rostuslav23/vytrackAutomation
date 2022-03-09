@@ -32,10 +32,9 @@ public class US8 extends TestBase {
         Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
 
         //Create calendar event
-        WebElement calender = Driver.getDriver().findElement(By.xpath("(//a[@href=\" / calendar / event / create\"])[3]"));
-        BrowserUtils.sleep(5);
+        Driver.getDriver().findElement(By.xpath("(//a[@href=\" / calendar / event / create\"])[3]")).click();
+
         //click on the calendar button
-        calender.click();
         BrowserUtils.sleep(2);
 
         //clicks on repeats checkboxes
