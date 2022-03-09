@@ -14,58 +14,74 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class US8{
+public class US8 {
     @DataProvider(name = "TruckDriverLogin")
     public Object[][] truckDriver(){
         return new Object[][]{
                 {"user1"},{"user2"},{"user3"},{"user4"},{"user5"},{"user6"}
         };
     }
+    @Test(dataProvider = "TruckDriverLogin")
+    public void truck_driver_see_error_messages(String trucksUsers){
+        VytrackUtils.login(trucksUsers,ConfigurationReader.getProperty("password"));
 
+        //click to "Activities"
+        Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[3]")).click();
+        //click on the "Calendar Event"
+        Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
 
-
-
-    @Test(dataProvider ="TruckDriverLogin")
-    public void test1(String truckUsers)  {
-        VytrackUtils.login(truckUsers, ConfigurationReader.getProperty("password"));
-
-
-
-
-
-         Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[3]")).click();
+        //Create calendar event
+       WebElement calender = Driver.getDriver().findElement(By.xpath("(//a[@href="/calendar/event/create"])[3]"));
         BrowserUtils.sleep(5);
-
-
-
-       Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
+        //click on the calendar button
+       calender.click();
         BrowserUtils.sleep(2);
 
-        Driver.getDriver().findElement(By.xpath("//a[@title='Create Calendar event']")).click();
-        BrowserUtils.sleep(2);
-
+        //clicks on repeats checkboxes
         Driver.getDriver().findElement(By.xpath("//input[contains(@id,'recurrence-repeat-view')]")).click();
 
-        WebElement valuee = Driver.getDriver().findElement(By.xpath("/input[@data-validation='{\"NotBlank\":{},\"Number\":{\"min\":1,\"max\":99},\"Type\":{\"type\":\"integer\"}}']"));
+        //locating "Repeat Every" input,and make it clear
+       WebElement repeat = Driver.getDriver().findElement(By.xpath("//input[@data-validation='{"NotBlank":{},"Number":{"min":1,"max":99},"Type":{"type":"integer"}}']"));// THE value cannot be more than 99
+        System.out.println("repeat.getAttribute("value") = " + repeat.getAttribute("value"));
 
-String actual=valuee.getAttribute("value");
-        System.out.println(actual);
-        String expected="1";
+        String expectedValue="1";
 
-        Assert.assertEquals(actual,expected);
+       String actualValue=repeat.getAttribute("value");
+
+      Assert.assertEquals(actualValue,expectedValue);
 
 
-        WebElement repeat = Driver.getDriver().findElement(By.xpath("//input[@class='recurrence-subview-control__number error']"));
         repeat.clear();
 
-        String actualdropdown=repeat.getText();
-        String expecteddropdown="This value should not be blank.";
+        String ExpectedError="This value should not be blank.";
 
-        Assert.assertEquals(actualdropdown,expecteddropdown);
+        String actualErrror=Driver.getDriver().findElement(By.xpath("//input[@class='recurrence-subview-control__number error']")).getText();
+
+        if (actualErrror==expectedValue){
+            System.out.println(true);
+        }else{
+            System.out.println(false);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
 }
+
 
 
 
