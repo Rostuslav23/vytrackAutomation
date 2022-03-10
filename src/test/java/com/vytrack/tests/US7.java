@@ -1,10 +1,7 @@
 package com.vytrack.tests;
 
 import com.vytrack.tests.base.TestBase;
-import com.vytrack.utilities.BrowserUtils;
-import com.vytrack.utilities.ConfigurationReader;
-import com.vytrack.utilities.Driver;
-import com.vytrack.utilities.VytrackUtils;
+import com.vytrack.utilities.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,18 +22,24 @@ public class US7 extends TestBase {
 
     @Test(dataProvider = "StoreManagersLogin", priority = 1)
     public void store_manager_view_unchecked_checkboxes(String storeManagerUsername){
-        fleet_vehicle(storeManagerUsername);
+        VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
+        VytrackUtils.waitTillLoaderMaskDisappear();
+        newUtilsTry.goToPage("Customers","Accounts");
+//        fleet_vehicle(storeManagerUsername);
 
         //finding all checkboxes
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
         //verify all of them are unchecked by using !isSelected() method
         allCheckBoxes.forEach(p-> Assert.assertTrue(!(p.isSelected())));
-
     }
 
     @Test(dataProvider = "StoreManagersLogin",priority = 2)
     public void store_managers_click_first_checkbox_to_check_all_the_cars(String storeManagerUsername){
-        fleet_vehicle(storeManagerUsername);
+        VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
+        VytrackUtils.waitTillLoaderMaskDisappear();
+        newUtilsTry.goToPage("System","Menus");
+
+//        fleet_vehicle(storeManagerUsername);
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
         Driver.getDriver().findElement(By.xpath("(//div[@class='btn-group dropdown']//input)[1]")).click();
         BrowserUtils.sleep(2);
@@ -45,7 +48,10 @@ public class US7 extends TestBase {
 
     @Test(dataProvider = "StoreManagersLogin",priority = 3)
     public void store_managers_check_any_cars_checkbox(String storeManagerUsername){
-       fleet_vehicle(storeManagerUsername);
+        VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
+        VytrackUtils.waitTillLoaderMaskDisappear();
+        newUtilsTry.goToPage("Fleet","Vehicles");
+//       fleet_vehicle(storeManagerUsername);
         //finding all checkboxes
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
         //making sure all checkboxes are NOT selected
