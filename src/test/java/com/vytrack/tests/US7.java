@@ -24,7 +24,7 @@ public class US7 extends TestBase {
     public void store_manager_view_unchecked_checkboxes(String storeManagerUsername){
         VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
         VytrackUtils.waitTillLoaderMaskDisappear();
-        newUtilsTry.goToPage("Customers","Accounts");
+        SupToSub.goToPage("Customers","Accounts");
 //        fleet_vehicle(storeManagerUsername);
 
         //finding all checkboxes
