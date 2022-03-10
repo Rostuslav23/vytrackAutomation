@@ -23,8 +23,7 @@ public class US7 extends TestBase {
     @Test(dataProvider = "StoreManagersLogin", priority = 1)
     public void store_manager_view_unchecked_checkboxes(String storeManagerUsername){
         VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
-        VytrackUtils.waitTillLoaderMaskDisappear();
-        SupToSub.goToPage("Customers","Accounts");
+        SupToSub.goToPage("Fleet","Vehicles");
 //        fleet_vehicle(storeManagerUsername);
 
         //finding all checkboxes
@@ -36,8 +35,7 @@ public class US7 extends TestBase {
     @Test(dataProvider = "StoreManagersLogin",priority = 2)
     public void store_managers_click_first_checkbox_to_check_all_the_cars(String storeManagerUsername){
         VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
-        VytrackUtils.waitTillLoaderMaskDisappear();
-        newUtilsTry.goToPage("System","Menus");
+        SupToSub.goToPage("Fleet","Vehicles");
 
 //        fleet_vehicle(storeManagerUsername);
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
@@ -49,8 +47,7 @@ public class US7 extends TestBase {
     @Test(dataProvider = "StoreManagersLogin",priority = 3)
     public void store_managers_check_any_cars_checkbox(String storeManagerUsername){
         VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
-        VytrackUtils.waitTillLoaderMaskDisappear();
-        newUtilsTry.goToPage("Fleet","Vehicles");
+        SupToSub.goToPage("Fleet","Vehicles");
 //       fleet_vehicle(storeManagerUsername);
         //finding all checkboxes
         List<WebElement> allCheckBoxes = Driver.getDriver().findElements(By.xpath("//input[@data-role='select-row-cell']"));
@@ -61,18 +58,6 @@ public class US7 extends TestBase {
             eachCheckBox.click();
             Assert.assertTrue(eachCheckBox.isSelected());
         }
-    }
-
-    public void fleet_vehicle(String storeManagerUsername){
-        VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
-        // Using Action class to hover over
-        Actions actions = new Actions(Driver.getDriver());
-        //locating "FLeet" button and going on it
-        WebElement fleetBtn = Driver.getDriver().findElement(By.xpath("//li[@class='dropdown dropdown-level-1']"));
-        BrowserUtils.sleep(2);
-        //locating "Vehicle" button, going on it, and click
-        WebElement vehiclesBtn = Driver.getDriver().findElement(By.xpath("//a[@href='entity/Extend_Entity_Carreservation']/span"));
-        actions.moveToElement(fleetBtn).pause(2000).moveToElement(vehiclesBtn).pause(1000).click(vehiclesBtn).build().perform();
     }
 }
 
