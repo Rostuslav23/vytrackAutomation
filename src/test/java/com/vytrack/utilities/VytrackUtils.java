@@ -46,6 +46,7 @@ public class VytrackUtils {
         Driver.getDriver().findElement(By.tagName("button")).click();
     }
 
+
     public static void loginAsSalesManager() {
         //go to website
         Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
