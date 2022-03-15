@@ -42,7 +42,7 @@ public class UserStory4 extends TestBase{
         WebElement vehicleContracts = Driver.getDriver().findElement(By.xpath("//*[@id='container']"));
         Assert.assertTrue(vehicleContracts.isDisplayed());
     }
-/*
+
     @Test(dataProvider = "salesManagersLogin")
     public void sales_manager_view_vehicle_contracts(String salesManagerUsername){
         VytrackUtils.login(salesManagerUsername,ConfigurationReader.getProperty("password"));
@@ -62,20 +62,4 @@ public class UserStory4 extends TestBase{
 
 
     }
-
-
-    String fleetTabElementLocator = "//span[normalize-space()='Fleet' and contains(@class, 'title title-level-1')]";
-
-    WebElement fleetTabElement = Driver.getDriver().findElement(By.xpath(fleetTabElementLocator));
-    Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(fleetTabElement).perform();
-    String vehiclesModelModuleLocator = "//span[normalize-space()='Vehicle Contracts' and contains(@class, 'title title-level-2')]";
-    WebElement vehiclesModelElement = Driver.getDriver().findElement(By.xpath(vehiclesModelModuleLocator));
-
-*/
-
-
-
-
-
 }
