@@ -1,5 +1,6 @@
 package com.vytrack.tests;
 
+import com.vytrack.tests.base.TestBase;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserStory1 {
+public class UserStory1 extends TestBase {
 
 
 
