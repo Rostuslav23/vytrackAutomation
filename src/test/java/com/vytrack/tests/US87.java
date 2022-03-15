@@ -27,19 +27,21 @@ public class US87 extends TestBase{
     }
     @Test(dataProvider = "TruckDriverLogin")
     public void truck_driver_see_error_messages(String trucksUsers){
-        VytrackUtils.login(trucksUsers,ConfigurationReader.getProperty("password"));
 
+        VytrackUtils.login(trucksUsers,ConfigurationReader.getProperty("password"));
+        VytrackUtils.waitTillLoaderMaskDisappear();
+   SupToSub.goToPage("Activities","Calendar Events");
         //click to "Activities"
-        Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[3]")).click();
+       // Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[3]")).click();
         //click on the "Calendar Event"
-        Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
+       // Driver.getDriver().findElement(By.xpath("//span[.='Calendar Events']")).click();
 
         //Create calendar event
         WebElement calender = Driver.getDriver().findElement(By.xpath("(//a[@href=\"/calendar/event/create\"])[3]"));
-        BrowserUtils.sleep(5);
+       VytrackUtils.waitTillLoaderMaskDisappear();
         //click on the calendar button
         calender.click();
-        BrowserUtils.sleep(2);
+       VytrackUtils.waitTillLoaderMaskDisappear();
 
         //clicks on repeats checkboxes
         Driver.getDriver().findElement(By.xpath("//input[contains(@id,'recurrence-repeat-view')]")).click();

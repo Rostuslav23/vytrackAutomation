@@ -34,7 +34,7 @@ public class US92 extends TestBase {
    VytrackUtils.login(salesManagerUsername,ConfigurationReader.getProperty("password"));
 
 
-
+BrowserUtils.sleep(2);
      //locating "marketing" tab
     Driver.getDriver().findElement(By.xpath("(//span[@class='title title-level-1'])[6]")).click();
      // locating "Campaigns" tab
@@ -51,16 +51,8 @@ public class US92 extends TestBase {
 
     BrowserUtils.sleep(2);
 
-    //Uncheck all checkBoxes and verify all is unselected
 
-    for (WebElement each: allCheckBoxes){
 
-        each.click();
-        Assert.assertTrue(each.isSelected());
-
-        for (int i = 0; i < allCheckBoxes.size()-1; i++) {
-            allCheckBoxes.get(i).click();
-            Assert.assertTrue(!(allCheckBoxes.get(i).isSelected()));
 
         }
     }
@@ -71,5 +63,5 @@ public class US92 extends TestBase {
 
 
 
-    }
-}
+
+
