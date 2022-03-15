@@ -1,5 +1,6 @@
-package com.vytrack.tests.base;
+package com.vytrack.tests;
 
+import com.vytrack.tests.base.TestBase;
 import com.vytrack.utilities.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserStory4 extends TestBase{
+public class UserStory4 extends TestBase {
 
     @DataProvider (name= "storeManagersLogin")
     public Object[][] StoreManagerUsername(){
