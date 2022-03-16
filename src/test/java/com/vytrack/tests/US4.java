@@ -32,7 +32,7 @@ public class US4 extends TestBase {
 
 
     @Test(dataProvider = "storeManagersLogin")
-    public void store_manager_view_vehicle_contracts(String storeManagerUsername) throws InterruptedException {
+    public void store_manager_view_vehicle_contracts(String storeManagerUsername){
         VytrackUtils.login(storeManagerUsername,ConfigurationReader.getProperty("password"));
         SupToSub.goToPage("Fleet","Vehicle Contracts");
         WebElement vehicleContracts = Driver.getDriver().findElement(By.xpath("//*[@id='container']"));

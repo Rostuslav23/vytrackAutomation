@@ -17,8 +17,6 @@ import java.util.List;
 
 public class US1 extends TestBase {
 
-
-
         @DataProvider(name= "drivers")
         public Object[][] driverUsernameData(){
             return new Object[][]{
