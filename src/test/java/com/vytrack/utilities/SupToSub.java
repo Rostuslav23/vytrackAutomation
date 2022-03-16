@@ -18,6 +18,7 @@ public class SupToSub {
         VytrackUtils.waitTillLoaderMaskDisappear();
         vehiclesModelElement.click();
         VytrackUtils.waitTillLoaderMaskDisappear();
+
     }
 
 }
