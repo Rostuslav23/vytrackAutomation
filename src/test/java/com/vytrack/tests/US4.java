@@ -4,16 +4,11 @@ import com.vytrack.tests.base.TestBase;
 import com.vytrack.utilities.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class UserStory4 extends TestBase {
+public class US4 extends TestBase {
 
     @DataProvider (name= "storeManagersLogin")
     public Object[][] StoreManagerUsername(){

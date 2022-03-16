@@ -3,17 +3,12 @@ package com.vytrack.tests;
 import com.vytrack.tests.base.TestBase;
 import com.vytrack.utilities.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class US6_14_84_view_edit_car_info_icons  extends TestBase {
+public class US6 extends TestBase {
 
     // We are login as a Driver
     @Test

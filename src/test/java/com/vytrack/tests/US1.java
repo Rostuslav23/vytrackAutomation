@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserStory1 extends TestBase {
+public class US1 extends TestBase {
 
 
 
