@@ -6,18 +6,14 @@ import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.VytrackUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public class US92 extends TestBase {
+public class US14 extends TestBase {
 
 
     @DataProvider(name = "SalesManager")
