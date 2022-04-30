@@ -24,16 +24,18 @@ public class US6 extends TestBase {
     }
 
         @Test (dataProvider = "TruckDriverLogin")
-    public void verifing_user_on_homepage(String truckDrivers){
+    public void verifying_user_on_homepage(String truckDrivers){
 
             VytrackUtils.login(truckDrivers, ConfigurationReader.getProperty("password"));
+            VytrackUtils.waitTillLoaderMaskDisappear();
             String actual_result = Driver.getDriver().getTitle();
             String expected_result = "Dashboard";
+            Assert.assertEquals(actual_result,expected_result);
         }
 
 
     @Test (dataProvider = "TruckDriverLogin")
-    public void verifing_user_on_vehicels_page (String truckDrivers)  {
+    public void verifying_user_on_vehicles_page(String truckDrivers)  {
 
         VytrackUtils.login(truckDrivers, ConfigurationReader.getProperty("password"));
         VytrackUtils.waitTillLoaderMaskDisappear();
