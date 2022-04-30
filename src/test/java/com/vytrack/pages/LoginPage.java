@@ -9,8 +9,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage {
 
     public LoginPage(){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
     @FindBy(xpath = "//input[@id='prependedInput']")
     public WebElement usernameInputBox;
 
